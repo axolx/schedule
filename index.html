@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <header>
+            <h1><strong>Welcome!</strong> Why don't you make a schedule?</h1>
+            <nav>
+            <!--<input id="slider" tabindex=1 type="range" min="0" max="20" step="1" value="6">-->
+                <ul>
+                    <li class="download"><a class="button" data-icon="&" 
+                        onclick="Phase.factory()" href="#">Add</a></li>
+                    <li class="download"><a class="button" data-icon="}" 
+                        onclick="alert('Not quite there yet...')" href="#">PDF</a></li>
+                </ul>
+            </nav>
+        </header>
+        <ul id="schedule"></ul>
+        <section> </section>
+        <script src="js/util.js"></script>
+        <script src="js/mouse.js"></script>
+        <script src="js/phaseLabel.js"></script>
+        <script src="js/phase.js"></script>
+        <script src="js/calendar.js"></script>
+        <script src="js/keyboard.js"></script>
+        <!--
+        <script src="schedule.js"></script>
+        -->
+        <script type="text/javascript">
+            Phase.factory();
+            Phase.factory().nextColor();
+            Phase.factory().nextColor().nextColor().node.blur();
+            </script>
+        </body>
+    </html>
