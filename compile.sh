@@ -1,5 +1,5 @@
 #! /bin/sh
-COMPILER=/Users/axolx/local/lib/compiler.jar
+COMPILER=$DROPBOX/lib/js/compiler.jar
 JAVA=/usr/bin/java
 OUT=schedule.js
 $JAVA -jar $COMPILER --js=js/util.js --js=js/phaseLabel.js --js=js/phase.js \
