@@ -1,0 +1,315 @@
+.user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+/* makeshift reset */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Pictos';
+  src: url('pictos-web.eot');
+  src: local('☺'), url('pictos-web.woff') format('woff'), url('pictos-web.ttf') format('truetype'), url('pictos-web.svg#webfontphKv1xv9') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+strong {
+  font-weight: bold;
+}
+body {
+  font-size: 62.5%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: relative;
+  background: -moz-repeating-linear-gradient(top left 0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 4.8%, rgba(255, 255, 255, 0.05) 4.8%, rgba(255, 255, 255, 0.05) 5%), #3c633d 0%;
+  /* Webkit background stripes and gradient */
+
+  background: -webkit-gradient(linear, left bottom, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.048, rgba(255, 255, 255, 0)), color-stop(0.048, rgba(255, 255, 255, 0.05)), color-stop(0.05, rgba(255, 255, 255, 0.05))), #3c633d 0%;
+  -webkit-background-size: 5% 100%;
+}
+body.moving {
+  cursor: move !important;
+}
+body.resizing {
+  cursor: ew-resize !important;
+}
+header {
+  display: block;
+  height: 25px;
+  background-color: #8f9398;
+  background: -moz-linear-gradient(top, #bebebe 0%, #7f7f7f 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bebebe), color-stop(100%, #7f7f7f));
+  /*top, rgba(190,190,190,1) 0%, rgba(127,127,127,1) 100%);*/
+
+  box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.3);
+  padding: 5px 15px;
+  margin-bottom: 1em;
+  font-size: 1.33em;
+  line-height: 25px;
+  color: #444;
+  text-shadow: rgba(255, 255, 255, 0.3) 0 1px 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+}
+header h1 {
+  float: left;
+}
+header strong {
+  font-size: 1.1em;
+  color: #eee;
+  color: #D7EFEB;
+  padding-right: 0.3em;
+  text-shadow: rgba(55, 55, 55, 0.5) 0 1px 0px;
+}
+header nav {
+  float: right;
+  margin-top: -5px;
+  /* offset padding in <nav> */
+
+}
+header nav ul {
+  overflow: hidden;
+}
+header nav li {
+  list-style: none;
+  float: left;
+}
+header nav a {
+  color: inherit;
+  text-decoration: none;
+}
+.button {
+  font-size: 10px;
+  letter-spacing: 0.7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.3em 0.9em;
+  margin: 0 0.4em;
+  color: #555;
+  text-shadow: rgba(255, 255, 255, 0.3) 0 1px 0px;
+  outline: none;
+  border: 1px solid #555;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background: -moz-linear-gradient(top, #fefefe 0%, #a7a7a7 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fefefe), color-stop(100%, #a7a7a7));
+}
+.button:active {
+  color: #555;
+  background: -moz-linear-gradient(top, #a7a7a7 0%, #fefefe 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a7a7a7), color-stop(100%, #fefefe));
+}
+.button:before {
+  content: attr(data-icon);
+  font-family: 'Pictos';
+  font-weight: bold;
+  font-size: 1em;
+  padding-right: 0.5em;
+  color: #333;
+}
+.phase {
+  text-align: center;
+  -webkit-background-size: 44px 44px;
+  cursor: move;
+  border: 1px solid;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  height: 33px;
+  margin-bottom: 10px;
+  position: relative;
+  -moz-transition: all 0.1s ease-in;
+  /* FF4+ */
+
+  -o-transition: all 0.1s ease-in;
+  /* Opera 10.5+ */
+
+  -webkit-transition: all 0.1s ease-in;
+  /* Saf3.2+, Chrome */
+
+  transition: all 0.1s ease-in;
+}
+.phase:focus {
+  outline: none;
+}
+.phase .label {
+  font-size: 1.2em;
+  line-height: 33px;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: rgba(255, 255, 255, 0.45) 0 1px 0px;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 0 1em;
+  cursor: text;
+}
+.phase:focus .label {
+  color: rgba(255, 255, 255, 0.8);
+}
+.phase .label[contenteditable=true] {
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 2px dotted white;
+}
+.phase.moving {
+  opacity: 0.7;
+}
+.phase.moving,
+.phase.moving .label,
+.phase.moving .tools {
+  cursor: move !important;
+}
+.phase .resize-handle {
+  font-family: 'Pictos';
+  font-weight: bold;
+  font-size: 1em;
+  padding-right: 0.5em;
+  color: #FFF;
+  position: absolute;
+  top: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: ew-resize;
+  right: -30px;
+  opacity: 0.3;
+}
+.phase:focus .tools {
+  visibility: visible;
+}
+body.resizing .phase .resize-handle {
+  opacity: 1;
+}
+/*
+.phase .cursor-left {
+border-color: transparent transparent transparent rgba(250,250,250,0.9);
+border-style:solid;
+border-width:5px 0 5px 10px;
+position: absolute;
+left: 10px;
+top: 33%;
+height:0;
+width:0;
+}
+    .phase .cursor-right {
+    border-color: transparent transparent transparent rgba(250,250,250,0.9);
+    border-style:solid;
+    border-width: 5px 10px 5px 0px;
+    margin: 0 10px;
+    position: absolute;
+    left: 10px;
+    top: 33%;
+    height:0;
+    width:0;
+    visibility: visible;
+}
+    .phase:focus .cursor {
+    visibility: visible;
+}
+ */
+.green {
+  background-color: green;
+  border-color: green;
+  /* Webkit background stripes and gradient */
+
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255, 255, 255, 0.17)), color-stop(0.25, rgba(255, 255, 255, 0.17)), color-stop(0.26, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(0.51, rgba(255, 255, 255, 0.17)), color-stop(0.75, rgba(255, 255, 255, 0.17)), color-stop(0.76, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, #008000), color-stop(1, #9bdd62));
+  /* Mozilla (Firefox etc) background stripes */
+
+  /* Note: Mozilla's support for gradients is more true to the original design, allowing gradients at 30 degrees, as apposed to 45 degress in webkit. */
+
+  background: -moz-repeating-linear-gradient(top left -30deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.17) 15px, rgba(255, 255, 255, 0) 15px, rgba(255, 255, 255, 0) 30px), -moz-linear-gradient(#9bdd62 0%, #008000 100%);
+  -webkit-box-shadow: #dbf383 0px 1px 0px 0px inset, #58c43a 0px -1px 1px inset;
+  -moz-box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+  box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+}
+.red {
+  background-color: red;
+  border-color: red;
+  /* Webkit background stripes and gradient */
+
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255, 255, 255, 0.17)), color-stop(0.25, rgba(255, 255, 255, 0.17)), color-stop(0.26, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(0.51, rgba(255, 255, 255, 0.17)), color-stop(0.75, rgba(255, 255, 255, 0.17)), color-stop(0.76, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, #ff0000), color-stop(1, #bc2929));
+  /* Mozilla (Firefox etc) background stripes */
+
+  /* Note: Mozilla's support for gradients is more true to the original design, allowing gradients at 30 degrees, as apposed to 45 degress in webkit. */
+
+  background: -moz-repeating-linear-gradient(top left -30deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.17) 15px, rgba(255, 255, 255, 0) 15px, rgba(255, 255, 255, 0) 30px), -moz-linear-gradient(#bc2929 0%, #ff0000 100%);
+  -webkit-box-shadow: #ff7a7a 0px 1px 0px 0px inset, #ff6060 0px -1px 1px inset;
+  -moz-box-shadow: inset 0px 1px 0px 0px #ff7a7a, inset 0px -1px 1px #ff6060;
+  box-shadow: inset 0px 1px 0px 0px #ff7a7a, inset 0px -1px 1px #ff6060;
+}
+.yellow {
+  background-color: yellow;
+  border-color: yellow;
+  /* Webkit background stripes and gradient */
+
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255, 255, 255, 0.17)), color-stop(0.25, rgba(255, 255, 255, 0.17)), color-stop(0.26, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(0.51, rgba(255, 255, 255, 0.17)), color-stop(0.75, rgba(255, 255, 255, 0.17)), color-stop(0.76, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(1, #ffd20a));
+  /* Mozilla (Firefox etc) background stripes */
+
+  /* Note: Mozilla's support for gradients is more true to the original design, allowing gradients at 30 degrees, as apposed to 45 degress in webkit. */
+
+  background: -moz-repeating-linear-gradient(top left -30deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.17) 15px, rgba(255, 255, 255, 0) 15px, rgba(255, 255, 255, 0) 30px), -moz-linear-gradient(#ffd20a 0%, #ffff00 100%);
+  -webkit-box-shadow: #fffabc 0px 1px 0px 0px inset, #fff468 0px -1px 1px inset;
+  -moz-box-shadow: inset 0px 1px 0px 0px #fffabc, inset 0px -1px 1px #fff468;
+  box-shadow: inset 0px 1px 0px 0px #fffabc, inset 0px -1px 1px #fff468;
+}
+.blue {
+  background-color: dodgerblue;
+  border-color: dodgerblue;
+  /* Webkit background stripes and gradient */
+
+  background: -webkit-gradient(linear, 0 0, 44 44, color-stop(0, rgba(255, 255, 255, 0.17)), color-stop(0.25, rgba(255, 255, 255, 0.17)), color-stop(0.26, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, 0)), color-stop(0.51, rgba(255, 255, 255, 0.17)), color-stop(0.75, rgba(255, 255, 255, 0.17)), color-stop(0.76, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left bottom, left top, color-stop(0, #1e90ff), color-stop(1, #9db1ea));
+  /* Mozilla (Firefox etc) background stripes */
+
+  /* Note: Mozilla's support for gradients is more true to the original design, allowing gradients at 30 degrees, as apposed to 45 degress in webkit. */
+
+  background: -moz-repeating-linear-gradient(top left -30deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.17) 15px, rgba(255, 255, 255, 0) 15px, rgba(255, 255, 255, 0) 30px), -moz-linear-gradient(#9db1ea 0%, #1e90ff 100%);
+  -webkit-box-shadow: #afdaff 0px 1px 0px 0px inset, #42bcff 0px -1px 1px inset;
+  -moz-box-shadow: inset 0px 1px 0px 0px #afdaff, inset 0px -1px 1px #42bcff;
+  box-shadow: inset 0px 1px 0px 0px #afdaff, inset 0px -1px 1px #42bcff;
+}
+.tools {
+  content: attr(data-icon);
+  font-family: 'Pictos';
+  font-size: 1.8em;
+  position: absolute;
+  right: 0.5em;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  visibility: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.tools:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+#schedule {
+  height: 1em;
+  margin-bottom: 3em;
+}
+#schedule:first-child {
+  margin-top: -1em;
+}
+#schedule li {
+  text-transform: uppercase;
+  padding-left: 0.4em;
+  position: absolute;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.4);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}

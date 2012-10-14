@@ -3,7 +3,8 @@
     <head>
         <meta charset=utf-8>
         <title>Hello World</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dropdown.css"/>
     </head>
     <body>
         <header>
@@ -23,6 +24,7 @@
         <script src="js/util.js"></script>
         <script src="js/mouse.js"></script>
         <script src="js/phaseLabel.js"></script>
+        <script src="js/dropdown.js"></script>
         <script src="js/phase.js"></script>
         <script src="js/calendar.js"></script>
         <script src="js/keyboard.js"></script>
@@ -30,7 +32,7 @@
         <script src="schedule.js"></script>
         -->
         <script type="text/javascript">
-            Phase.factory();
+            Phase.factory().openTools();
             Phase.factory().nextColor();
             Phase.factory().nextColor().nextColor().node.blur();
             </script>

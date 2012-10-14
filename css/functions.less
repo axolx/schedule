@@ -1,0 +1,36 @@
+.transition(@val) {
+    -moz-transition: @val;  /* FF4+ */
+    -o-transition: @val;  /* Opera 10.5+ */
+    -webkit-transition: @val;  /* Saf3.2+, Chrome */
+    transition: @val;  
+}
+
+.border-radius (@radius: 5px) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.box-shadow (@params: 1px 1px 3px rgba(0, 0, 0, 0.6)) {
+    box-shadow: @params;
+    -webkit-box-shadow: @params;
+    -moz-box-shadow: @params;
+}
+
+.box_gradient(@color1, @color2 ) {
+  background-color: @color1;
+  background-image: -moz-linear-gradient(top, @color1, @color2); /* FF3.6 */
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, @color1),color-stop(1, @color2)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(@color1, @color2); /* Chrome 10+, Saf6 */
+  background-image: linear-gradient(top, @color1, @color2);
+}
+
+.user-select-none {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+}
+
+.rotate(@deg: 45deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+}

@@ -12,22 +12,21 @@ function Phase(container) {
 }
 
 Phase.prototype.draw = function() {
-    var n = document.createElement("div");
-    n.addClassName("phase");
-    n.addClassName("green");
-    n.style.marginLeft = "30%";
-    n.style.marginRight = "30%";
+    var n = document.createElement('div');
+    n.addClassName('phase');
+    n.addClassName('green');
+    n.style.marginLeft = '30%';
+    n.style.marginRight = '30%';
     n.tabIndex = 1;
     this.label = new PhaseLabel(this);
     this.tools = document.createElement('span');
     this.tools.addClassName('tools');
-    this.tools.setAttribute('onclick', "alert('Not quite there yet...')");
     this.tools.innerHTML = 'y';
     n.appendChild(this.label.node);
     n.appendChild(this.tools);
     this.container.appendChild(n, this.container.lastChild);
     this.node = n;
-    // define resizeHandle but don't add it to the node until focus  
+    // define resizeHandle but don't add it to the node until focus
     this.resizeHandle = document.createElement('span');
     this.resizeHandle.addClassName('resize-handle');
     this.resizeHandle.innerHTML = '[]';
@@ -37,55 +36,62 @@ Phase.prototype.draw = function() {
 Phase.prototype.addListeners = function() {
     this.node.addEventListener('focus', this.focus.bind(this), true);
     this.node.addEventListener('blur', this.blur.bind(this), true);
+    this.tools.addEventListener('click', this.openTools.bind(this), true);
 };
 
 Phase.prototype.lengthen = function() {
-    this.node.style.marginRight = deltaPrc(this.node.style.marginRight, -SHIFT_AMOUNT);
+    this.node.style.marginRight = deltaPrc(this.node.style.marginRight,
+        -SHIFT_AMOUNT);
 };
 
 Phase.prototype.shorten = function() {
-    if(parseInt(this.node.style.marginRight, 10) + 
+    if (parseInt(this.node.style.marginRight, 10) +
             parseInt(this.node.style.marginLeft, 10) >= 100 - SHIFT_AMOUNT) {
-        return; // enforce min width of 1 intem 
+        return; // enforce min width of 1 intem
     }
-    this.node.style.marginRight = deltaPrc(this.node.style.marginRight, SHIFT_AMOUNT);
+    this.node.style.marginRight = deltaPrc(this.node.style.marginRight,
+        SHIFT_AMOUNT);
 };
 
 Phase.prototype.advance = function() {
-    if(parseInt(this.node.style.marginLeft, 10) < SHIFT_AMOUNT) {
+    if (parseInt(this.node.style.marginLeft, 10) < SHIFT_AMOUNT) {
         return;
     }
-    this.node.style.marginLeft = deltaPrc(this.node.style.marginLeft, -SHIFT_AMOUNT);
-    this.node.style.marginRight = deltaPrc(this.node.style.marginRight, SHIFT_AMOUNT);
+    this.node.style.marginLeft = deltaPrc(this.node.style.marginLeft,
+        -SHIFT_AMOUNT);
+    this.node.style.marginRight = deltaPrc(this.node.style.marginRight,
+        SHIFT_AMOUNT);
 };
 
 Phase.prototype.delay = function() {
-    if(parseInt(this.node.style.marginRight, 10) < SHIFT_AMOUNT) {
+    if (parseInt(this.node.style.marginRight, 10) < SHIFT_AMOUNT) {
         return;
     }
-    this.node.style.marginLeft = deltaPrc(this.node.style.marginLeft, SHIFT_AMOUNT);
-    this.node.style.marginRight = deltaPrc(this.node.style.marginRight, -SHIFT_AMOUNT);
+    this.node.style.marginLeft = deltaPrc(this.node.style.marginLeft,
+        SHIFT_AMOUNT);
+    this.node.style.marginRight = deltaPrc(this.node.style.marginRight,
+        -SHIFT_AMOUNT);
 };
 
 Phase.prototype.swapDown = function() {
     var i = Phase.phases.indexOf(this);
-    if(i == Phase.phases.length -1)  {
+    if (i == Phase.phases.length - 1) {
         return false;
     }
-    var next = Phase.phases[i+1];
+    var next = Phase.phases[i + 1];
     this.container.insertBefore(next.node, this.node);
-    Phase.phases.swap(i, i+1);
+    Phase.phases.swap(i, i + 1);
     this.node.focus();
 };
 
 Phase.prototype.swapUp = function() {
     var i = Phase.phases.indexOf(this);
-    if(i === 0) {
+    if (i === 0) {
         return false;
     }
-    var prev = Phase.phases[i-1];
+    var prev = Phase.phases[i - 1];
     this.container.insertBefore(this.node, prev.node);
-    Phase.phases.swap(i, i-1);
+    Phase.phases.swap(i, i - 1);
     this.node.focus();
 };
 
@@ -102,9 +108,9 @@ Phase.prototype.focus = function() {
 };
 
 Phase.prototype.remove = function() {
-    if(confirm('Delete this phase?')) {
+    if (confirm('Delete this phase?')) {
         var i = Phase.phases.indexOf(this);
-        var prev = arrayRollOver(Phase.phases, i-1);
+        var prev = arrayRollOver(Phase.phases, i - 1);
         Phase.phases.splice(i, 1);
         this.container.removeChild(this.node);
         prev.node.focus();
@@ -113,10 +119,10 @@ Phase.prototype.remove = function() {
 };
 
 Phase.prototype.prevColor = function() {
-    for(var i=0,l=Phase.COLORS.length; i<l; i++) {
-        if(this.node.hasClassName(Phase.COLORS[i])) {
+    for (var i = 0, l = Phase.COLORS.length; i < l; i++) {
+        if (this.node.hasClassName(Phase.COLORS[i])) {
             this.node.removeClassName(Phase.COLORS[i]);
-            this.color = arrayRollOver(Phase.COLORS, i-1);
+            this.color = arrayRollOver(Phase.COLORS, i - 1);
             this.node.addClassName(this.color);
             return this;
         }
@@ -124,25 +130,29 @@ Phase.prototype.prevColor = function() {
 };
 
 Phase.prototype.nextColor = function() {
-    for(var i=0,l=Phase.COLORS.length; i<l; i++) {
-        if(this.node.hasClassName(Phase.COLORS[i])) {
+    for (var i = 0, l = Phase.COLORS.length; i < l; i++) {
+        if (this.node.hasClassName(Phase.COLORS[i])) {
             this.node.removeClassName(Phase.COLORS[i]);
-            this.color = arrayRollOver(Phase.COLORS, i+1);
+            this.color = arrayRollOver(Phase.COLORS, i + 1);
             this.node.addClassName(this.color);
             return this;
         }
     }
 };
 
-Phase.ACTIONS = [ 'lengthen', 'shorten', 'advance', 'delay', 'swapUp', 'swapDown', 
-    'editLabel', 'blur', 'add', 'remove', 'prevColor', 'nextColor' ];
+Phase.prototype.openTools = function() {
+    Dropdown.open();
+};
 
-Phase.COLORS = [ 'green', 'red', 'yellow', 'blue' ];
+Phase.ACTIONS = ['lengthen', 'shorten', 'advance', 'delay', 'swapUp',
+    'swapDown', 'editLabel', 'blur', 'add', 'remove', 'prevColor', 'nextColor'];
+
+Phase.COLORS = ['green', 'red', 'yellow', 'blue'];
 
 
 Phase.factory = function() {
-    var c,p;
-    if(typeof Phase.phases == 'undefined') {
+    var c, p;
+    if (typeof Phase.phases == 'undefined') {
         Phase.phases = [];
     }
     c = document.getElementsByTagName('section')[0];
@@ -151,8 +161,8 @@ Phase.factory = function() {
 };
 
 Phase.getByNode = function(node) {
-    for(var i=0; i<Phase.phases.length; i++) {
-        if(Phase.phases[i].node == node) {
+    for (var i = 0; i < Phase.phases.length; i++) {
+        if (Phase.phases[i].node == node) {
             return Phase.phases[i];
         }
     }

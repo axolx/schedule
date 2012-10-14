@@ -10,16 +10,17 @@ function Calendar(type, items) {
     this.items = items ? items : Calendar.MAX_ITEMS;
     this.container = document.getElementById('schedule');
     this.theme(this.spacing);
-    if(document.getElementById('slider')) {
-        document.getElementById('slider').addEventListener('change', this.reset.bind(this), true);
+    if (document.getElementById('slider')) {
+        document.getElementById('slider').
+            addEventListener('change', this.reset.bind(this), true);
     }
 }
 
 Calendar.prototype.theme = function() {
-    var spacing = 5 * Math.floor( Calendar.MAX_ITEMS / this.items );
-    for(var i=0; i<this.items; i++) {
-        var item = document.createElement("li");
-        item.style.marginLeft = spacing * i + "%";
+    var spacing = 5 * Math.floor(Calendar.MAX_ITEMS / this.items);
+    for (var i = 0; i < this.items; i++) {
+        var item = document.createElement('li');
+        item.style.marginLeft = spacing * i + '%';
         item.innerHTML = i + 1;
         this.container.appendChild(item, this.container.lastChild);
     }
@@ -33,17 +34,17 @@ Calendar.prototype.reset = function(evt) {
 };
 
 Calendar.prototype.clear = function() {
-    while (this.container.hasChildNodes()) { 
-        this.container.removeChild(this.container.lastChild); 
+    while (this.container.hasChildNodes()) {
+        this.container.removeChild(this.container.lastChild);
     }
 };
 
-Calendar.initDefault = function () {
+Calendar.initDefault = function() {
     var c = new Calendar(this.WEEK, this.MAX_ITEMS);
 };
 
-Calendar.DAY   = 1;
-Calendar.WEEK  = 2;
+Calendar.DAY = 1;
+Calendar.WEEK = 2;
 Calendar.MONTH = 3;
 Calendar.MAX_ITEMS = 20;
 

@@ -1,6 +1,6 @@
 
 // Mouse Navigation
-Mouse = { 
+Mouse = {
 
     // How many pixels to consider something moved
     SENSITIVITY_X: 30,
@@ -21,7 +21,7 @@ Mouse.initPhase = function(phase) {
 };
 
 Mouse.move.start = function(evt) {
-    if(!evt.target.hasClassName('phase')) {
+    if (!evt.target.hasClassName('phase')) {
         return;
     }
     var phase = Phase.getByNode(evt.target);
@@ -36,18 +36,18 @@ Mouse.move.start = function(evt) {
 Mouse.move.checkMove = function(evt) {
     var distanceX = evt.clientX - Mouse.move.last.x;
     var distanceY = evt.clientY - Mouse.move.last.y;
-    if(Math.abs(distanceX) > Mouse.SENSITIVITY_X) {
+    if (Math.abs(distanceX) > Mouse.SENSITIVITY_X) {
         Mouse.move.last.x = evt.clientX;
-        if(distanceX > 0) {
+        if (distanceX > 0) {
             Mouse.move.item.delay();
         }
         else {
             Mouse.move.item.advance();
         }
     }
-    if(Math.abs(distanceY) > Mouse.SENSITIVITY_Y) {
+    if (Math.abs(distanceY) > Mouse.SENSITIVITY_Y) {
         Mouse.move.last.y = evt.clientY;
-        if(distanceY > 0) {
+        if (distanceY > 0) {
             Mouse.move.item.swapDown();
         }
         else {
@@ -78,9 +78,9 @@ Mouse.size.start = function(evt) {
 
 Mouse.size.checkMove = function(evt) {
     var distanceX = evt.clientX - Mouse.size.last.x;
-    if(Math.abs(distanceX) > Mouse.SENSITIVITY_X) {
+    if (Math.abs(distanceX) > Mouse.SENSITIVITY_X) {
         Mouse.size.last.x = evt.clientX;
-        if(distanceX > 0) {
+        if (distanceX > 0) {
             Mouse.size.item.lengthen();
         }
         else {
