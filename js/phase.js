@@ -141,11 +141,13 @@ Phase.prototype.nextColor = function() {
 };
 
 Phase.prototype.openTools = function() {
-    Dropdown.open();
+    if (typeof this.dropdown != 'undefined') {
+        this.dropdown.open();
+    }
 };
 
 Phase.ACTIONS = ['lengthen', 'shorten', 'advance', 'delay', 'swapUp',
-    'swapDown', 'editLabel', 'blur', 'add', 'remove', 'prevColor', 'nextColor'];
+    'swapDown', 'editLabel', 'blur', 'remove', 'prevColor', 'nextColor'];
 
 Phase.COLORS = ['green', 'red', 'yellow', 'blue'];
 

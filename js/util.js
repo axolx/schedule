@@ -89,6 +89,11 @@ Element.prototype.removeClassName = function(name) {
     }
 };
 
+Element.prototype.toggleClassName = function(name) {
+    this.hasClassName(name) ? this.removeClassName(name) :
+        this.addClassName(name);
+};
+
 /**
  * If the index doesn't exist roll over
  */
